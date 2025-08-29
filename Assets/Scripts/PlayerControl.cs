@@ -50,7 +50,7 @@ public class PlayerControl : MonoBehaviour
     void Update()
     {
         if (!GameStarted) return; // Do nothing if the game hasn't started
-        if(Input.GetMouseButtonDown(0)) // Check for mouse button press (0 is left button)
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0)) // Check for mouse button press (0 is left button)
         {
             _rigidBody.linearVelocityY = _jumpForce; // Set the vertical velocity to 10 units per second
         }

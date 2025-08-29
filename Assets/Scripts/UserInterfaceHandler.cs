@@ -24,6 +24,7 @@ public class UserInterfaceHandler : MonoBehaviour
         _playerControl = _player.gameObject.GetComponent<PlayerControl>();
         _player.SetActive(false);  // Ensure the player is inactive at the start
         _scoreUI.SetActive(false); // Hide score UI at the start
+        _lastScoreText.text = "0"; // Initialize last score display
 
         _bestScore = PlayerPrefs.GetInt("BestScore", 0); // Load the best score from PlayerPrefs
         _bestScoreText.text = _bestScore.ToString(); // Display the best score
@@ -43,7 +44,7 @@ public class UserInterfaceHandler : MonoBehaviour
                 PlayerPrefs.Save(); // Ensure the best score is saved
             }
 
-            if (_playerControl.Score > 0 && _playerControl.Score != _lastScore)
+            if (_playerControl.Score != _lastScore)
             {
                 _lastScore = _playerControl.Score; // Update the last score when the player dies
                 _lastScoreText.text = _lastScore.ToString(); // Update the last score display
